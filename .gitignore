@@ -1,0 +1,13 @@
+.idea
+.DS_Store
+node_modules
+typings
+build
+npm-debug.log
+logs
+files
+todo
+docs
+.env
+ecosystem.config.js
+prisma/migrations

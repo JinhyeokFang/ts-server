@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "outDir": "build",
+    "module": "commonjs",
+    "sourceMap": true,
+    "target": "es6",
+    "lib": ["ESNext"],
+    "strict": true,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "rootDir": "./src",
+    "strictPropertyInitialization": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./types"
+    ]
+  },
+  "exclude": ["./**/*.test.ts"]
+}
