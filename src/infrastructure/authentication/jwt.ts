@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import environmentVariablesLoader from '../constants/environmentVariablesLoader';
 
 export interface ITokenData extends Record<string, unknown> {
   isAccessToken: boolean,
@@ -6,7 +7,7 @@ export interface ITokenData extends Record<string, unknown> {
 }
 
 class JWT {
-  public key: string;
+  public key: string = environmentVariablesLoader.variables.SECRET_KEY;
 
   public setKey(newKey: string): void {
     this.key = newKey;

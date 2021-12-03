@@ -5,23 +5,23 @@ const config = {
     definition: {
       openapi: "3.0.0",
       info: {
-        title: "LogRocket Express API with Swagger",
-        version: "0.1.0",
+        title: "ts-server",
+        version: "4.0.0",
         description:
-          "This is a simple CRUD API application made with Express and documented with Swagger",
+          "ts boilerplate",
         license: {
           name: "MIT",
           url: "https://spdx.org/licenses/MIT.html",
         },
         contact: {
-          name: "LogRocket",
-          url: "https://logrocket.com",
-          email: "info@email.com",
+          name: "",
+          url: "",
+          email: "",
         },
       },
       servers: [
         {
-          url: "http://localhost:3000/books",
+          url: "http://localhost:3000/",
         },
       ],
     },

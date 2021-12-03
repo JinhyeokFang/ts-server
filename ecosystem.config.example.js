@@ -28,7 +28,7 @@ module.exports = {
         repo: '',
         ssh_options: '',
         path: '',
-        'post-deploy': 'npm install && npm run build && npm start'
+        'post-deploy': 'npm ci && npm run build && npm start'
       },
     }
   };

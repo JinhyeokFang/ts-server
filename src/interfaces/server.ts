@@ -8,6 +8,7 @@ import swaggerUI from 'swagger-ui-express';
 import logger from '../infrastructure/logger/logger';
 import router from './router';
 import swagger from '../infrastructure/documentation/swagger';
+import environmentVariablesLoader from '../infrastructure/constants/environmentVariablesLoader';
 
 const app = express();
 
@@ -31,7 +32,7 @@ app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swagger, { explorer: true 
 app.use('/api/v1', router);
 
 export function start() {
-    app.listen(3000, () => {
+    app.listen(environmentVariablesLoader.variables.PORT, () => {
         logger.info('서버 시작');
     });
 }
