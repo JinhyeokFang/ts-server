@@ -1,6 +1,8 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Menu } from "./menu.entity";
-import { User } from "./user.entity";
+import {
+  Column, Entity, ManyToOne, PrimaryGeneratedColumn,
+} from 'typeorm';
+import Menu from './menu.entity';
+import User from './user.entity';
 
 export enum OrderStatus {
     Pending,
@@ -9,16 +11,16 @@ export enum OrderStatus {
 }
 
 @Entity()
-export class Order {
+export default class Order {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(() => Menu, menu => menu.id)
+    @ManyToOne(() => Menu, (menu) => menu.id)
     menu: Menu;
 
-    @ManyToOne(() => User, user => user.id)
+    @ManyToOne(() => User, (user) => user.id)
     user: User;
 
-    @Column({ type: "enum", enum: OrderStatus, default: OrderStatus.Pending })
+    @Column({ type: 'enum', enum: OrderStatus, default: OrderStatus.Pending })
     status: OrderStatus;
 }

@@ -1,9 +1,11 @@
-import { IsIn, IsInt, IsString, Max, Min } from "class-validator";
+import {
+  IsIn, IsInt, IsString, Max, Min,
+} from 'class-validator';
 
 export enum NODE_ENV {
     Production = 'production',
     Development = 'development'
-};
+}
 
 export class EnvironmentVariables {
     @IsString()

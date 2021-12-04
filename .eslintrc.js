@@ -1,24 +1,26 @@
 module.exports = {
-  "ignorePatterns": ["node_modules/*", "*.js"],
-  "extends": [
+  ignorePatterns: ["node_modules/*", "*.js"],
+  extends: [
     "airbnb-base",
     "plugin:@typescript-eslint/recommended"
   ],
-  "env": {
-    "node": true
+  env: {
+    node: true,
+    jest: true
   },
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": 2018,
-    "sourceType": "module"
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    ecmaVersion: 2018,
+    sourceType: "module"
   },
-  "plugins": [
+  plugins: [
     "@typescript-eslint/eslint-plugin"
   ],
-  "rules": {
+  rules: {
     'import/extensions': [ 'error', 'ignorePackages', { js: 'never', jsx: 'never', ts: 'never', tsx: 'never', json: 'never', }, ],
     'class-methods-use-this': 0,
-    "no-shadow": [0]
+    'no-shadow': [0],
+    'max-classes-per-file': 0
   },
   settings: { 
     'import/resolver': { 

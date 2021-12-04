@@ -1,4 +1,4 @@
-import { IsEmail, IsString, MinLength } from "class-validator";
+import { IsEmail, IsString, MinLength } from 'class-validator';
 
 export class RegisterDTO {
     @IsEmail()
@@ -9,7 +9,7 @@ export class RegisterDTO {
     password: string;
 
     @IsString()
-    name: string = '기본값';
+    name: string;
 }
 
 export class LoginDTO {

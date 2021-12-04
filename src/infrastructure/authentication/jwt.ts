@@ -1,7 +1,7 @@
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 import environmentVariablesLoader from '../constants/environmentVariablesLoader';
 
-export interface ITokenData extends Record<string, unknown> {
+export interface ITokenData extends JwtPayload {
   isAccessToken: boolean,
   username: string
 }
@@ -23,8 +23,12 @@ class JWT {
   }
 
   public async verify(token: string): Promise<ITokenData> {
-    const data: ITokenData = await jwt.verify(token, this.key);
-    return data;
+    try {
+      const data: ITokenData = await jwt.verify(token, this.key) as ITokenData;
+      return data;
+    } catch (error) {
+      throw Error('잘못된 토큰입니다.');
+    }
   }
 }
 

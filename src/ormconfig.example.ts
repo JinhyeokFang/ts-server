@@ -1,18 +1,21 @@
 import { ConnectionOptions } from 'typeorm';
+import path from 'path';
 
-export const config: ConnectionOptions = {
-    type: 'mysql',
-    host: '',
-    port: 3306,
-    username: '',
-    password: '',
-    database: '',
-    synchronize: true,
-    logging: true,
-    entities: [__dirname + '/**/*.entity{.ts,.js}'],
-    migrations: [__dirname + '/infrastructure/orm/migrations/**/*{.ts,.js}'],
-    cli: {
-        entitiesDir: 'src/entities',
-        migrationsDir: 'src/migrations',
-    },
+const config: ConnectionOptions = {
+  type: 'mysql',
+  host: '',
+  port: 3306,
+  username: '',
+  password: '',
+  database: '',
+  synchronize: true,
+  logging: true,
+  entities: [path.join(__dirname, '/**/*.entity{.ts,.js}')],
+  migrations: [path.join(__dirname, '/infrastructure/orm/migrations/**/*{.ts,.js}')],
+  cli: {
+    entitiesDir: 'src/entities',
+    migrationsDir: 'src/migrations',
+  },
 };
+
+export default config;
