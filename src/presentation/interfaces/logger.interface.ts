@@ -1,6 +1,6 @@
-import { Transform } from "stream";
+import { Transform } from 'stream';
 
-export default interface Logger {
+export interface Logger {
   stream(message: string): Transform;
   info(str: string): void;
   error(str: string): void;

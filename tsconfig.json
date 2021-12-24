@@ -14,8 +14,12 @@
     "experimentalDecorators": true,
     "typeRoots": [
       "./node_modules/@types",
-      "./types"
-    ]
+      "./@types"
+    ],
+    "declaration": true,
   },
-  "exclude": ["./**/*.test.ts"]
+  "exclude": [
+    "./**/*.test.ts",
+    "./**/*.example.ts"
+  ]
 }

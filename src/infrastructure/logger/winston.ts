@@ -1,7 +1,7 @@
 import { Transform } from 'stream';
 import winston from 'winston';
 import WinstonDaily from 'winston-daily-rotate-file';
-import Logger from '../../presentation/interfaces/logger.interface';
+import { Logger } from '../../presentation/interfaces/logger.interface';
 
 class WinstonLogger implements Logger {
   private options = {
@@ -27,6 +27,7 @@ class WinstonLogger implements Logger {
       }),
     ],
   };
+
   private winstonInstance = winston.createLogger(this.options);
 
   public stream(message: string): Transform {
@@ -39,7 +40,7 @@ class WinstonLogger implements Logger {
 
   public async error(str: string): Promise<void> {
     await this.winstonInstance.error(str);
-  };
+  }
 }
 
 export default new WinstonLogger();
