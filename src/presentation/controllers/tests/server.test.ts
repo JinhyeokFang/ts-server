@@ -2,9 +2,10 @@ import express from 'express';
 import request from 'supertest';
 
 import UserController from '../user.controller';
+import jwt from '../../../infrastructure/authorization/jwt';
 
 const app = express();
-const userController = new UserController();
+const userController = new UserController(jwt);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(userController.baseURL, userController.router);

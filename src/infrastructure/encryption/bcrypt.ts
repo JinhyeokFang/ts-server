@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt';
+import { Encryption } from '../../application/interfaces/encryption.interface';
 
-class Bcrypt {
+class Bcrypt implements Encryption {
   private saltRounds = 10;
 
   public async compare(password: string, encryptedPassword: string): Promise<boolean> {

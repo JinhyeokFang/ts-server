@@ -3,11 +3,17 @@ import {
   ConflictError, NotFoundError,
 } from 'ts-response';
 import User from '../../domain/user.entity';
-import bcrypt from '../../infrastructure/encryption/bcrypt';
 import typeorm from '../../infrastructure/orm/typeorm';
 import { LoginDTO, RegisterDTO } from '../dtos/user.dto';
+import { Encryption } from '../interfaces/encryption.interface';
 
-class UserService {
+export default class UserService {
+  private encryption: Encryption;
+
+  constructor(encryption: Encryption) {
+    this.encryption = encryption;
+  }
+
   async register(registerDTO: RegisterDTO): Promise<void> {
     const isValidate = await validate(registerDTO);
     if (!isValidate) throw new ValidationError();
@@ -20,7 +26,7 @@ class UserService {
 
     const userEntity = new User();
     userEntity.email = registerDTO.email;
-    userEntity.password = await bcrypt.hash(registerDTO.password);
+    userEntity.password = await this.encryption.hash(registerDTO.password);
 
     await repository.save(userEntity);
   }
@@ -34,8 +40,6 @@ class UserService {
     const user = await repository.findOne({ select: ['email', 'password'], where: { email: loginDTO.email } });
 
     if (user === undefined) throw new NotFoundError('유저를 찾을 수 없습니다.');
-    if (await bcrypt.compare(loginDTO.password, user.password) === false) throw new NotFoundError('유저를 찾을 수 없습니다.');
+    if (await this.encryption.compare(loginDTO.password, user.password) === false) throw new NotFoundError('유저를 찾을 수 없습니다.');
   }
 }
-
-export default new UserService();

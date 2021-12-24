@@ -4,12 +4,11 @@ import compression from 'compression';
 import helmet from 'helmet';
 import cors from 'cors';
 import swaggerUI from 'swagger-ui-express';
-import { Logger } from 'winston';
 
-import logger from '../infrastructure/logger/logger';
+import logger, { stream } from '../infrastructure/logger/winston';
 import router from './router';
 import swagger from '../infrastructure/documentation/swagger';
-import environmentVariablesLoader from '../infrastructure/constants/environmentVariablesLoader';
+import environmentVariablesLoader from '../infrastructure/environmentVariables/envLoader';
 
 const app = express();
 
@@ -22,7 +21,7 @@ app.set('trust proxy', true);
 
 app.use(morgan('combined', {
   stream: {
-    write: (message: string): Logger => logger.http(message),
+    write: stream,
   },
 }));
 

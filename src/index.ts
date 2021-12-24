@@ -1,3 +1,3 @@
-import { start } from './interfaces/server';
+import { start } from './presentation/server';
 
 start();
